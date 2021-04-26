@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import './screens/product_detail_screen.dart';
+import './screens/products_overview_screen.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -8,26 +11,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'MyShop',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(),
-    );
-  }
-}
-
-class MyHomePage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("MyShop"),
-      ),
-      body: Center(
-        child: Text("Lets build a shop app!"),
-      ),
-    );
+        debugShowCheckedModeBanner: false,
+        title: 'MyShop',
+        theme: ThemeData(
+          primarySwatch: Colors.amber,
+          accentColor: Colors.purple,
+          fontFamily: "Lato",
+        ),
+        home: ProductsOverviewScreen(),
+        routes: {
+          ProductDetailScreen.routeName: (context) => ProductDetailScreen(),
+        });
   }
 }
