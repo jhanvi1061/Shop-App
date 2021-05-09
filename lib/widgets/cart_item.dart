@@ -49,7 +49,7 @@ class CartItem extends StatelessWidget {
         child: Icon(
           Icons.delete,
           color: Colors.white,
-          size: 40,
+          size: 30,
         ),
         alignment: Alignment.centerRight,
         padding: const EdgeInsets.only(right: 20),

@@ -37,7 +37,7 @@ class UserProductItem extends StatelessWidget {
             ),
             IconButton(
               icon: Icon(
-                Icons.delete_outline,
+                Icons.delete,
                 color: Theme.of(context).errorColor,
               ),
               onPressed: () {
