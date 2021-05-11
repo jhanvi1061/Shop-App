@@ -23,10 +23,10 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
     print("Build() - ProductsOverviewScreen");
     return Scaffold(
       appBar: AppBar(
-        title: Text("MyShop"),
+        title: const Text("MyShop"),
         actions: [
           PopupMenuButton(
-            icon: Icon(Icons.more_vert),
+            icon: const Icon(Icons.more_vert),
             onSelected: (FilterOptions selectedValue) {
               setState(() {
                 if (selectedValue == FilterOptions.Favorites) {
@@ -38,18 +38,18 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
             },
             itemBuilder: (_) => [
               PopupMenuItem(
-                child: Text("Only Favorites"),
+                child: const Text("Only Favorites"),
                 value: FilterOptions.Favorites,
               ),
               PopupMenuItem(
-                child: Text("Show All"),
+                child: const Text("Show All"),
                 value: FilterOptions.All,
               ),
             ],
           ),
           Consumer<Cart>(
             child: IconButton(
-              icon: Icon(Icons.shopping_cart_outlined),
+              icon: const Icon(Icons.shopping_cart_outlined),
               onPressed: () {
                 Navigator.of(context).pushNamed(CartScreen.routeName);
               },

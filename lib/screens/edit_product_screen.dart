@@ -105,7 +105,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
     print("Build() - EditProductScreen");
     return Scaffold(
       appBar: AppBar(
-        title: Text("Edit Product"),
+        title: const Text("Edit Product"),
         actions: [
           IconButton(
             icon: Icon(Icons.save_outlined),
@@ -206,7 +206,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
                       ),
                     ),
                     child: _imageUrlController.text.isEmpty
-                        ? Text("Enter a URL")
+                        ? const Text("Enter a URL")
                         : FittedBox(
                             child: Image.network(
                               _imageUrlController.text,

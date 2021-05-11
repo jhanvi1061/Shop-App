@@ -49,14 +49,14 @@ class _OrderItemState extends State<OrderItem> {
                           children: [
                             Text(
                               prod.title,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.w500,
                               ),
                             ),
                             Text(
                               "${prod.quantity}x \$${prod.price}",
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 18,
                                 color: Colors.black,
                               ),

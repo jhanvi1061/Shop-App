@@ -25,10 +25,8 @@ class UserProductItem extends StatelessWidget {
         child: Row(
           children: [
             IconButton(
-              icon: Icon(
-                Icons.edit,
-                color: Theme.of(context).primaryColor,
-              ),
+              color: Theme.of(context).primaryColor,
+              icon: const Icon(Icons.edit),
               onPressed: () {
                 Navigator.of(context).pushNamed(
                   EditProductScreen.routeName,
@@ -37,10 +35,8 @@ class UserProductItem extends StatelessWidget {
               },
             ),
             IconButton(
-              icon: Icon(
-                Icons.delete,
-                color: Theme.of(context).errorColor,
-              ),
+              color: Theme.of(context).errorColor,
+              icon: const Icon(Icons.delete),
               onPressed: () {
                 Provider.of<ProductsProvider>(context, listen: false)
                     .deleteProduct(id);

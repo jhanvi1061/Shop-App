@@ -11,30 +11,30 @@ class AppDrawer extends StatelessWidget {
       child: Column(
         children: [
           AppBar(
-            title: Text("Hello Friend!"),
+            title: const Text("Hello Friend!"),
             automaticallyImplyLeading: false,
           ),
-          Divider(),
+          const Divider(),
           ListTile(
-            leading: Icon(Icons.shop_outlined),
-            title: Text("Shop"),
+            leading: const Icon(Icons.shop_outlined),
+            title: const Text("Shop"),
             onTap: () {
               Navigator.of(context).pushReplacementNamed('/');
             },
           ),
-          Divider(),
+          const Divider(),
           ListTile(
-            leading: Icon(Icons.payment_outlined),
-            title: Text("Orders"),
+            leading: const Icon(Icons.payment_outlined),
+            title: const Text("Orders"),
             onTap: () {
               Navigator.of(context)
                   .pushReplacementNamed(OrdersScreen.routeName);
             },
           ),
-          Divider(),
+          const Divider(),
           ListTile(
-            leading: Icon(Icons.edit_outlined),
-            title: Text("Manage Products"),
+            leading: const Icon(Icons.edit_outlined),
+            title: const Text("Manage Products"),
             onTap: () {
               Navigator.of(context)
                   .pushReplacementNamed(UserProductsScreen.routeName);
