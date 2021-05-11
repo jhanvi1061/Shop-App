@@ -13,6 +13,7 @@ class Badge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print("Build() - Badge");
     return Stack(
       alignment: Alignment.center,
       children: [

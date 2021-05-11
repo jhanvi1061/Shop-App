@@ -14,6 +14,7 @@ class UserProductItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print("Build() - UserProductItem");
     return ListTile(
       title: Text(title),
       leading: CircleAvatar(

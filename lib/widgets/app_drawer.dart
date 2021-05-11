@@ -6,6 +6,7 @@ import '../screens/orders_screen.dart';
 class AppDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    print("Build() - AppDrawer");
     return Drawer(
       child: Column(
         children: [

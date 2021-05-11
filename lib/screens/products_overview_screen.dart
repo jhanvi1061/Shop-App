@@ -20,6 +20,7 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
 
   @override
   Widget build(BuildContext context) {
+    print("Build() - ProductsOverviewScreen");
     return Scaffold(
       appBar: AppBar(
         title: Text("MyShop"),
