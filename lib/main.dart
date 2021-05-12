@@ -1,6 +1,7 @@
 import 'package:provider/provider.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import './screens/edit_product_screen.dart';
 import './screens/user_products_screen.dart';
@@ -13,10 +14,22 @@ import './screens/products_overview_screen.dart';
 import './providers/products_provider.dart';
 
 void main() {
-  runApp(MyApp());
+  // setting system ui overlay style
+  SystemChrome.setSystemUIOverlayStyle(
+    SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+      statusBarIconBrightness: Brightness.light,
+    ),
+  );
+  // setting preffered orientations for the app
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
+  runApp(MeShop());
 }
 
-class MyApp extends StatelessWidget {
+class MeShop extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     print("Build() - MeShop");
@@ -37,7 +50,6 @@ class MyApp extends StatelessWidget {
         title: "MeShop",
         theme: ThemeData(
           primaryColor: Color(0xff1E4E5F),
-          // primarySwatch: Colors.amber,
           accentColor: Color(0xffFFB156),
           canvasColor: Color(0xffFFF7EE),
           fontFamily: "Lato",
