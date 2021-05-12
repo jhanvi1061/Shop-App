@@ -19,7 +19,7 @@ class ProductItem extends StatelessWidget {
     final product = Provider.of<Product>(context, listen: false);
     final cart = Provider.of<Cart>(context, listen: false);
     return ClipRRect(
-      borderRadius: BorderRadius.circular(10),
+      borderRadius: BorderRadius.circular(8),
       child: GridTile(
         child: GestureDetector(
           onTap: () {
@@ -34,11 +34,12 @@ class ProductItem extends StatelessWidget {
           ),
         ),
         footer: GridTileBar(
-          backgroundColor: Colors.black87.withOpacity(0.8),
+          backgroundColor: Color(0xff021639).withOpacity(0.8),
           leading: Consumer<Product>(
             builder: (context, product, _) => IconButton(
               icon: Icon(
                 product.isFavorite ? Icons.favorite : Icons.favorite_border,
+                size: 21,
               ),
               onPressed: () => product.toggleFavoriteStatus(),
               color: Theme.of(context).accentColor,
@@ -47,9 +48,10 @@ class ProductItem extends StatelessWidget {
           title: Text(
             product.title,
             textAlign: TextAlign.center,
+            style: TextStyle(fontSize: 13),
           ),
           trailing: IconButton(
-            icon: const Icon(Icons.shopping_cart_outlined),
+            icon: const Icon(Icons.shopping_cart_outlined, size: 21),
             onPressed: () {
               cart.addItem(product.id, product.price, product.title);
               ScaffoldMessenger.of(context).hideCurrentSnackBar();

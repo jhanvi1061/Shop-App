@@ -15,7 +15,13 @@ class CartScreen extends StatelessWidget {
     final cart = Provider.of<Cart>(context);
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Your Cart"),
+        toolbarHeight: 48,
+        title: const Text(
+          "Your Cart",
+          style: TextStyle(
+            fontSize: 16,
+          ),
+        ),
       ),
       body: Column(
         children: [

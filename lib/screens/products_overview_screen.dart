@@ -23,9 +23,28 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
     print("Build() - ProductsOverviewScreen");
     return Scaffold(
       appBar: AppBar(
-        title: const Text("MyShop"),
+        toolbarHeight: 48,
+        title: const Text(
+          "MeShop",
+          style: TextStyle(
+            fontSize: 16,
+          ),
+        ),
         actions: [
+          Consumer<Cart>(
+            child: IconButton(
+              icon: const Icon(Icons.shopping_cart_outlined),
+              onPressed: () {
+                Navigator.of(context).pushNamed(CartScreen.routeName);
+              },
+            ),
+            builder: (context, cart, child) => Badge(
+              child: child,
+              value: cart.itemCount.toString(),
+            ),
+          ),
           PopupMenuButton(
+            color: Color(0xffFFF7EE),
             icon: const Icon(Icons.more_vert),
             onSelected: (FilterOptions selectedValue) {
               setState(() {
@@ -46,18 +65,6 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
                 value: FilterOptions.All,
               ),
             ],
-          ),
-          Consumer<Cart>(
-            child: IconButton(
-              icon: const Icon(Icons.shopping_cart_outlined),
-              onPressed: () {
-                Navigator.of(context).pushNamed(CartScreen.routeName);
-              },
-            ),
-            builder: (context, cart, child) => Badge(
-              child: child,
-              value: cart.itemCount.toString(),
-            ),
           ),
         ],
       ),

@@ -16,7 +16,13 @@ class UserProductsScreen extends StatelessWidget {
     final productsData = Provider.of<ProductsProvider>(context);
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Your Products"),
+        toolbarHeight: 48,
+        title: const Text(
+          "Your Products",
+          style: TextStyle(
+            fontSize: 16,
+          ),
+        ),
         actions: [
           IconButton(
             icon: const Icon(Icons.add),

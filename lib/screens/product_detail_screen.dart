@@ -15,7 +15,13 @@ class ProductDetailScreen extends StatelessWidget {
         .findById(productId);
     return Scaffold(
       appBar: AppBar(
-        title: Text(loadedProduct.title),
+        toolbarHeight: 48,
+        title: Text(
+          loadedProduct.title,
+          style: TextStyle(
+            fontSize: 16,
+          ),
+        ),
       ),
       body: SingleChildScrollView(
         child: Column(

@@ -105,7 +105,13 @@ class _EditProductScreenState extends State<EditProductScreen> {
     print("Build() - EditProductScreen");
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Edit Product"),
+        toolbarHeight: 48,
+        title: const Text(
+          "Edit Product",
+          style: TextStyle(
+            fontSize: 16,
+          ),
+        ),
         actions: [
           IconButton(
             icon: Icon(Icons.save_outlined),

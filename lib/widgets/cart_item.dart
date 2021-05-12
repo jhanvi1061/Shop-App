@@ -31,13 +31,23 @@ class CartItem extends StatelessWidget {
                 const Text("Do you want to remove the item from the cart?"),
             actions: [
               TextButton(
-                child: const Text("No"),
+                child: const Text(
+                  "No",
+                  style: TextStyle(
+                    color: Color(0xff021639),
+                  ),
+                ),
                 onPressed: () {
                   Navigator.of(context).pop(false);
                 },
               ),
               TextButton(
-                child: const Text("Yes"),
+                child: const Text(
+                  "Yes",
+                  style: TextStyle(
+                    color: Color(0xff021639),
+                  ),
+                ),
                 onPressed: () {
                   Navigator.of(context).pop(true);
                 },
@@ -63,6 +73,8 @@ class CartItem extends StatelessWidget {
           padding: const EdgeInsets.all(8),
           child: ListTile(
             leading: CircleAvatar(
+              foregroundColor: Color(0xff021639),
+              backgroundColor: Color(0xffFFB156),
               child: Padding(
                 padding: const EdgeInsets.all(5.0),
                 child: FittedBox(

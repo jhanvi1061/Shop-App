@@ -15,7 +15,13 @@ class OrdersScreen extends StatelessWidget {
     final orderData = Provider.of<Orders>(context);
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Your Orders"),
+        toolbarHeight: 48,
+        title: const Text(
+          "Your Orders",
+          style: TextStyle(
+            fontSize: 16,
+          ),
+        ),
       ),
       drawer: AppDrawer(),
       body: ListView.builder(

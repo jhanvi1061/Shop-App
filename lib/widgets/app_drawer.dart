@@ -4,6 +4,15 @@ import '../screens/user_products_screen.dart';
 import '../screens/orders_screen.dart';
 
 class AppDrawer extends StatelessWidget {
+  String greet() {
+    int time = DateTime.now().hour;
+    return time < 12
+        ? "Good Morning!"
+        : time < 17
+            ? "Good Afternoon!"
+            : "Good Evening!";
+  }
+
   @override
   Widget build(BuildContext context) {
     print("Build() - AppDrawer");
@@ -11,10 +20,15 @@ class AppDrawer extends StatelessWidget {
       child: Column(
         children: [
           AppBar(
-            title: const Text("Hello Friend!"),
+            toolbarHeight: 48,
+            title: Text(
+              greet(),
+              style: TextStyle(
+                fontSize: 16,
+              ),
+            ),
             automaticallyImplyLeading: false,
           ),
-          const Divider(),
           ListTile(
             leading: const Icon(Icons.shop_outlined),
             title: const Text("Shop"),
@@ -39,6 +53,18 @@ class AppDrawer extends StatelessWidget {
               Navigator.of(context)
                   .pushReplacementNamed(UserProductsScreen.routeName);
             },
+          ),
+          const Divider(),
+          ListTile(
+            leading: const Icon(Icons.account_circle_outlined),
+            title: const Text("Developed by"),
+            subtitle: const Text(
+              "Jhanvi Soni",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
+              ),
+            ),
           ),
         ],
       ),

@@ -19,7 +19,7 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    print("Build() - MyShop");
+    print("Build() - MeShop");
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
@@ -34,10 +34,12 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: "MyShop",
+        title: "MeShop",
         theme: ThemeData(
-          primarySwatch: Colors.amber,
-          accentColor: Colors.purple[400],
+          primaryColor: Color(0xff1E4E5F),
+          // primarySwatch: Colors.amber,
+          accentColor: Color(0xffFFB156),
+          canvasColor: Color(0xffFFF7EE),
           fontFamily: "Lato",
         ),
         home: ProductsOverviewScreen(),
