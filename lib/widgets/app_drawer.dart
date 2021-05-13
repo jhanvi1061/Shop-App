@@ -57,7 +57,7 @@ class AppDrawer extends StatelessWidget {
           const Divider(),
           ListTile(
             leading: const Icon(Icons.account_circle_outlined),
-            title: const Text("Developed by"),
+            title: const Text("Made with ♥ by"),
             subtitle: const Text(
               "Jhanvi Soni",
               style: TextStyle(

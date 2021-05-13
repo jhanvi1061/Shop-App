@@ -25,6 +25,7 @@ class OrdersScreen extends StatelessWidget {
       ),
       drawer: AppDrawer(),
       body: ListView.builder(
+        physics: BouncingScrollPhysics(),
         itemCount: orderData.orders.length,
         itemBuilder: (context, i) => OrderItem(orderData.orders[i]),
       ),

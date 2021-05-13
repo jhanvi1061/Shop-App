@@ -36,6 +36,7 @@ class UserProductsScreen extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(8),
         child: ListView.builder(
+          physics: BouncingScrollPhysics(),
           itemCount: productsData.items.length,
           itemBuilder: (context, i) => Column(
             children: [

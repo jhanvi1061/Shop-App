@@ -14,11 +14,18 @@ import './screens/products_overview_screen.dart';
 import './providers/products_provider.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   // setting system ui overlay style
   SystemChrome.setSystemUIOverlayStyle(
     SystemUiOverlayStyle(
+      // statusBarColor is used to set Status bar color in Android devices.
       statusBarColor: Colors.transparent,
-      statusBarIconBrightness: Brightness.light,
+      // To make Status bar icons color white in Android devices.
+      statusBarIconBrightness: Brightness.dark,
+      // statusBarBrightness is used to set Status bar icon color in iOS.
+      statusBarBrightness: Brightness.dark,
+      systemNavigationBarColor: Colors.transparent,
+      systemNavigationBarIconBrightness: Brightness.dark,
     ),
   );
   // setting preffered orientations for the app
@@ -53,6 +60,14 @@ class MeShop extends StatelessWidget {
           accentColor: Color(0xffFFB156),
           canvasColor: Color(0xffFFF7EE),
           fontFamily: "Lato",
+          appBarTheme: AppBarTheme(
+            brightness: Brightness.dark,
+            backgroundColor: Color(0xff1E4E5F),
+            elevation: 0,
+          ),
+          cardTheme: CardTheme(
+            color: Color(0xffFFFAF4),
+          ),
         ),
         home: ProductsOverviewScreen(),
         routes: {

@@ -69,6 +69,7 @@ class CartScreen extends StatelessWidget {
           const SizedBox(height: 10),
           Expanded(
             child: ListView.builder(
+              physics: BouncingScrollPhysics(),
               itemCount: cart.items.length,
               itemBuilder: (context, i) => CartItem(
                 id: cart.items.values.toList()[i].id,
