@@ -32,7 +32,7 @@ class ProductsProvider with ChangeNotifier {
       // imageUrl:
       //     'https://cdn.pixabay.com/photo/2013/07/12/18/20/shoes-153310_960_720.png',
       imageUrl:
-          'https://github.com/jhanvi1061/Shop-App/blob/master/web%20assests/p3.png',
+          'https://raw.githubusercontent.com/jhanvi1061/Shop-App/master/web%20assests/p3.webp',
     ),
     Product(
       id: 'p4',
@@ -42,7 +42,7 @@ class ProductsProvider with ChangeNotifier {
       // imageUrl:
       //     'https://d3uvb2lhumlp.cloudfront.net/pub/media/catalog/product/cache/f751fae08115cd00f88855057a9f034e/t/h/th9190_fsl_24_1.jpg',
       imageUrl:
-          'https://github.com/jhanvi1061/Shop-App/blob/master/web%20assests/p4.jpg',
+          'https://raw.githubusercontent.com/jhanvi1061/Shop-App/master/web%20assests/p4.webp',
     ),
     Product(
       id: 'p5',
@@ -62,7 +62,7 @@ class ProductsProvider with ChangeNotifier {
       // imageUrl:
       //     'https://cdn.pixabay.com/photo/2016/03/09/15/21/glasses-1246611_960_720.jpg',
       imageUrl:
-          'https://github.com/jhanvi1061/Shop-App/blob/master/web%20assests/p6.jpg',
+          'https://raw.githubusercontent.com/jhanvi1061/Shop-App/master/web%20assests/p6.webp',
     ),
     Product(
       id: 'p7',
@@ -72,7 +72,7 @@ class ProductsProvider with ChangeNotifier {
       // imageUrl:
       //     'https://cdn.pixabay.com/photo/2014/05/21/14/54/feet-349687_960_720.jpg',
       imageUrl:
-          'https://github.com/jhanvi1061/Shop-App/blob/master/web%20assests/p7.jpg',
+          'https://raw.githubusercontent.com/jhanvi1061/Shop-App/master/web%20assests/p7.webp',
     ),
     Product(
       id: 'p8',
@@ -82,7 +82,7 @@ class ProductsProvider with ChangeNotifier {
       // imageUrl:
       //     'https://cdn.pixabay.com/photo/2014/05/02/21/50/laptop-336378_960_720.jpg',
       imageUrl:
-          'https://github.com/jhanvi1061/Shop-App/blob/master/web%20assests/p8.jpg',
+          'https://raw.githubusercontent.com/jhanvi1061/Shop-App/master/web%20assests/p8.webp',
     ),
     Product(
       id: 'p9',
@@ -102,7 +102,7 @@ class ProductsProvider with ChangeNotifier {
       // imageUrl:
       //     'https://cdn.pixabay.com/photo/2016/02/19/11/35/makeup-1209798_960_720.jpg',
       imageUrl:
-          'https://github.com/jhanvi1061/Shop-App/blob/master/web%20assests/p10.jpg',
+          'https://raw.githubusercontent.com/jhanvi1061/Shop-App/master/web%20assests/p10.webp',
     ),
     Product(
       id: 'p11',
