@@ -41,8 +41,10 @@ class ProductsProvider with ChangeNotifier {
       title: "Men's Watch",
       description: 'Perfect watch to get a royal look in  hand.',
       price: 29.99,
+      // imageUrl:
+      //     'https://cdn.pixabay.com/photo/2014/07/31/23/00/wristwatch-407096_960_720.jpg',
       imageUrl:
-          'https://cdn.pixabay.com/photo/2014/07/31/23/00/wristwatch-407096_960_720.jpg',
+          'https://raw.githubusercontent.com/jhanvi1061/Shop-App/master/web%20assests/wristwatch-407096_960_720.webp',
     ),
     Product(
       id: 'p6',
