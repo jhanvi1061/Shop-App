@@ -52,7 +52,7 @@ class ProductsProvider with ChangeNotifier {
       // imageUrl:
       //     'https://cdn.pixabay.com/photo/2014/07/31/23/00/wristwatch-407096_960_720.jpg',
       imageUrl:
-          'https://raw.githubusercontent.com/jhanvi1061/Shop-App/master/web%20assests/wristwatch-407096_960_720.webp',
+          'https://raw.githubusercontent.com/jhanvi1061/Shop-App/master/web%20assests/p5.webp',
     ),
     Product(
       id: 'p6',
