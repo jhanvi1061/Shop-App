@@ -21,55 +21,69 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
   @override
   Widget build(BuildContext context) {
     print("Build() - ProductsOverviewScreen");
-    return Scaffold(
-      appBar: AppBar(
-        toolbarHeight: 48,
-        title: const Text(
-          "MeShop",
-          style: TextStyle(
-            fontSize: 16,
+    MediaQueryData mediaQueryData = MediaQuery.of(context);
+    final screenWidth = mediaQueryData.size.width;
+    return Row(
+      children: [
+        if (screenWidth > 600) ...{
+          AppDrawer(),
+          const VerticalDivider(
+            width: 0.1,
+          ),
+        },
+        Expanded(
+          child: Scaffold(
+            appBar: AppBar(
+              toolbarHeight: 48,
+              title: const Text(
+                "MeShop",
+                style: TextStyle(
+                  fontSize: 16,
+                ),
+              ),
+              actions: [
+                Consumer<Cart>(
+                  child: IconButton(
+                    icon: const Icon(Icons.shopping_cart_outlined),
+                    onPressed: () {
+                      Navigator.of(context).pushNamed(CartScreen.routeName);
+                    },
+                  ),
+                  builder: (context, cart, child) => Badge(
+                    child: child,
+                    value: cart.itemCount.toString(),
+                  ),
+                ),
+                PopupMenuButton(
+                  color: Color(0xffFFF7EE),
+                  icon: const Icon(Icons.more_vert),
+                  onSelected: (FilterOptions selectedValue) {
+                    setState(() {
+                      if (selectedValue == FilterOptions.Favorites) {
+                        _showOnlyFavorites = true;
+                      } else {
+                        _showOnlyFavorites = false;
+                      }
+                    });
+                  },
+                  itemBuilder: (_) => [
+                    PopupMenuItem(
+                      child: const Text("Only Favorites"),
+                      value: FilterOptions.Favorites,
+                    ),
+                    PopupMenuItem(
+                      child: const Text("Show All"),
+                      value: FilterOptions.All,
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            drawer: screenWidth < 600 ? AppDrawer() : null,
+            body: ProductsGrid(_showOnlyFavorites),
           ),
         ),
-        actions: [
-          Consumer<Cart>(
-            child: IconButton(
-              icon: const Icon(Icons.shopping_cart_outlined),
-              onPressed: () {
-                Navigator.of(context).pushNamed(CartScreen.routeName);
-              },
-            ),
-            builder: (context, cart, child) => Badge(
-              child: child,
-              value: cart.itemCount.toString(),
-            ),
-          ),
-          PopupMenuButton(
-            color: Color(0xffFFF7EE),
-            icon: const Icon(Icons.more_vert),
-            onSelected: (FilterOptions selectedValue) {
-              setState(() {
-                if (selectedValue == FilterOptions.Favorites) {
-                  _showOnlyFavorites = true;
-                } else {
-                  _showOnlyFavorites = false;
-                }
-              });
-            },
-            itemBuilder: (_) => [
-              PopupMenuItem(
-                child: const Text("Only Favorites"),
-                value: FilterOptions.Favorites,
-              ),
-              PopupMenuItem(
-                child: const Text("Show All"),
-                value: FilterOptions.All,
-              ),
-            ],
-          ),
-        ],
-      ),
-      drawer: AppDrawer(),
-      body: ProductsGrid(_showOnlyFavorites),
+      ],
     );
   }
 }
