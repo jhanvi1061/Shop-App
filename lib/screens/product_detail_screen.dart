@@ -18,9 +18,7 @@ class ProductDetailScreen extends StatelessWidget {
         toolbarHeight: 48,
         title: Text(
           loadedProduct.title,
-          style: TextStyle(
-            fontSize: 16,
-          ),
+          style: const TextStyle(fontSize: 16),
         ),
       ),
       body: SingleChildScrollView(
@@ -37,10 +35,7 @@ class ProductDetailScreen extends StatelessWidget {
             const SizedBox(height: 10),
             Text(
               "\$${loadedProduct.price}",
-              style: const TextStyle(
-                color: Colors.grey,
-                fontSize: 20,
-              ),
+              style: const TextStyle(color: Colors.grey, fontSize: 20),
             ),
             const SizedBox(height: 10),
             Container(

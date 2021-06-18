@@ -34,23 +34,24 @@ class ProductItem extends StatelessWidget {
           ),
         ),
         footer: GridTileBar(
-          backgroundColor: Color(0xff021639).withOpacity(0.8),
+          backgroundColor: const Color(0xff021639).withOpacity(0.8),
           leading: Consumer<Product>(
             builder: (context, product, _) => IconButton(
+              color: Theme.of(context).accentColor,
               icon: Icon(
                 product.isFavorite ? Icons.favorite : Icons.favorite_border,
                 size: 21,
               ),
               onPressed: () => product.toggleFavoriteStatus(),
-              color: Theme.of(context).accentColor,
             ),
           ),
           title: Text(
             product.title,
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 13),
+            style: const TextStyle(fontSize: 13),
           ),
           trailing: IconButton(
+            color: Theme.of(context).accentColor,
             icon: const Icon(Icons.shopping_cart_outlined, size: 21),
             onPressed: () {
               cart.addItem(product.id, product.price, product.title);
@@ -66,7 +67,6 @@ class ProductItem extends StatelessWidget {
                 ),
               );
             },
-            color: Theme.of(context).accentColor,
           ),
         ),
       ),

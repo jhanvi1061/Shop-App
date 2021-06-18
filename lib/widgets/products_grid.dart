@@ -18,7 +18,7 @@ class ProductsGrid extends StatelessWidget {
     final productsData = Provider.of<ProductsProvider>(context);
     final products = showFavs ? productsData.favoriteItems : productsData.items;
     return GridView.builder(
-      physics: BouncingScrollPhysics(),
+      physics: const BouncingScrollPhysics(),
       padding: const EdgeInsets.all(10),
       itemCount: products.length,
       itemBuilder: (context, i) => ChangeNotifierProvider.value(
@@ -30,17 +30,20 @@ class ProductsGrid extends StatelessWidget {
             // imageUrl: products[i].imageUrl,
             ),
       ),
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: screenWidth > 1200
-            ? 4
-            : screenWidth > 900
-                ? 4
-                : screenWidth > 600
-                    ? 3
-                    : screenWidth > 400
-                        ? 2
-                        : 1,
-        childAspectRatio: 3 / 2.25,
+      // gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+      //   crossAxisCount: screenWidth > 1200
+      //       ? 4
+      //       : screenWidth > 900
+      //           ? 4
+      //           : screenWidth > 600
+      //               ? 3
+      //               : screenWidth > 400
+      //                   ? 2
+      //                   : 1,
+      //   childAspectRatio: 3 / 2.25,
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        childAspectRatio: 3 / 2,
         crossAxisSpacing: 10,
         mainAxisSpacing: 10,
       ),

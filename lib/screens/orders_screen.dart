@@ -35,9 +35,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
           toolbarHeight: 48,
           title: const Text(
             "Your Orders",
-            style: TextStyle(
-              fontSize: 16,
-            ),
+            style: const TextStyle(fontSize: 16),
           ),
         ),
         drawer: AppDrawer(),
@@ -50,12 +48,12 @@ class _OrdersScreenState extends State<OrdersScreen> {
             } else {
               if (dataSnapshot.error != null) {
                 return Center(
-                  child: Text("An error occurred!"),
+                  child: const Text("An error occurred!"),
                 );
               } else {
                 return Consumer<Orders>(
                   builder: (context, orderData, child) => ListView.builder(
-                    physics: BouncingScrollPhysics(),
+                    physics: const BouncingScrollPhysics(),
                     itemCount: orderData.orders.length,
                     itemBuilder: (context, i) => OrderItem(orderData.orders[i]),
                   ),

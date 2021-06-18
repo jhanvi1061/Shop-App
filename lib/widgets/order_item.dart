@@ -25,7 +25,7 @@ class _OrderItemState extends State<OrderItem> {
       child: Column(
         children: [
           ListTile(
-            tileColor: Color(0xffFFFAF4),
+            tileColor: const Color(0xffFFFAF4),
             title: Text("\$${widget.order.amount}"),
             subtitle: Text(
               DateFormat('dd/MM/yyyy hh:mm').format(widget.order.datetTime),
@@ -33,15 +33,13 @@ class _OrderItemState extends State<OrderItem> {
             trailing: IconButton(
               icon: Icon(_expanded ? Icons.expand_less : Icons.expand_more),
               onPressed: () {
-                setState(() {
-                  _expanded = !_expanded;
-                });
+                setState(() => _expanded = !_expanded);
               },
             ),
           ),
           if (_expanded)
             Container(
-              color:Color(0xffFFFAF4),
+              color: const Color(0xffFFFAF4),
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 4),
               height: min(widget.order.products.length * 20.0 + 20, 100),
               child: ListView(

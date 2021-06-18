@@ -18,9 +18,7 @@ class CartScreen extends StatelessWidget {
         toolbarHeight: 48,
         title: const Text(
           "Your Cart",
-          style: TextStyle(
-            fontSize: 16,
-          ),
+          style: const TextStyle(fontSize: 16),
         ),
       ),
       body: Column(
@@ -55,7 +53,7 @@ class CartScreen extends StatelessWidget {
           const SizedBox(height: 10),
           Expanded(
             child: ListView.builder(
-              physics: BouncingScrollPhysics(),
+              physics: const BouncingScrollPhysics(),
               itemCount: cart.items.length,
               itemBuilder: (context, i) => CartItem(
                 id: cart.items.values.toList()[i].id,
@@ -91,9 +89,7 @@ class _OrderButtonState extends State<OrderButton> {
           ? CircularProgressIndicator(strokeWidth: 2)
           : Text(
               "ORDER NOW",
-              style: TextStyle(
-                color: Theme.of(context).primaryColor,
-              ),
+              style: TextStyle(color: Theme.of(context).primaryColor),
             ),
       onPressed: (widget.cart.totalAmount <= 0 || _isLoading)
           ? null

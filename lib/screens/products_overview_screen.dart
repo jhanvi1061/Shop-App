@@ -1,8 +1,8 @@
 import 'package:provider/provider.dart';
 
 import 'package:flutter/material.dart';
-import 'package:shop_app/providers/products_provider.dart';
 
+import '../providers/products_provider.dart';
 import '../providers/cart.dart';
 import '../screens/cart_screen.dart';
 import '../widgets/app_drawer.dart';
@@ -50,9 +50,7 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
       children: [
         if (screenWidth > 600) ...{
           AppDrawer(),
-          const VerticalDivider(
-            width: 0.1,
-          ),
+          const VerticalDivider(width: 0.1),
         },
         Expanded(
           child: Scaffold(
@@ -60,9 +58,7 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
               toolbarHeight: 48,
               title: const Text(
                 "MeShop",
-                style: TextStyle(
-                  fontSize: 16,
-                ),
+                style: const TextStyle(fontSize: 16),
               ),
               actions: [
                 Consumer<Cart>(
@@ -78,7 +74,7 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
                   ),
                 ),
                 PopupMenuButton(
-                  color: Color(0xffFFF7EE),
+                  color: const Color(0xffFFF7EE),
                   icon: const Icon(Icons.more_vert),
                   onSelected: (FilterOptions selectedValue) {
                     setState(() {

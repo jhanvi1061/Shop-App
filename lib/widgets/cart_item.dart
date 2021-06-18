@@ -33,9 +33,7 @@ class CartItem extends StatelessWidget {
               TextButton(
                 child: const Text(
                   "No",
-                  style: TextStyle(
-                    color: Color(0xff021639),
-                  ),
+                  style: const TextStyle(color: Color(0xff021639)),
                 ),
                 onPressed: () {
                   Navigator.of(context).pop(false);
@@ -44,9 +42,7 @@ class CartItem extends StatelessWidget {
               TextButton(
                 child: const Text(
                   "Yes",
-                  style: TextStyle(
-                    color: Color(0xff021639),
-                  ),
+                  style: const TextStyle(color: Color(0xff021639)),
                 ),
                 onPressed: () {
                   Navigator.of(context).pop(true);
@@ -73,8 +69,8 @@ class CartItem extends StatelessWidget {
           padding: const EdgeInsets.all(8),
           child: ListTile(
             leading: CircleAvatar(
-              foregroundColor: Color(0xff021639),
-              backgroundColor: Color(0xffFFB156),
+              foregroundColor: const Color(0xff021639),
+              backgroundColor: const Color(0xffFFB156),
               child: Padding(
                 padding: const EdgeInsets.all(5.0),
                 child: FittedBox(

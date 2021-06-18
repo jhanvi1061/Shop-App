@@ -24,9 +24,7 @@ class UserProductsScreen extends StatelessWidget {
         toolbarHeight: 48,
         title: const Text(
           "Your Products",
-          style: TextStyle(
-            fontSize: 16,
-          ),
+          style: const TextStyle(fontSize: 16),
         ),
         actions: [
           IconButton(
@@ -40,12 +38,12 @@ class UserProductsScreen extends StatelessWidget {
       drawer: AppDrawer(),
       body: RefreshIndicator(
         onRefresh: () => _refreshProducts(context),
-        color: Color(0xff1E4E5F),
+        color: const Color(0xff1E4E5F),
         child: Padding(
           padding: const EdgeInsets.all(8),
           child: ListView.builder(
             physics: const BouncingScrollPhysics(
-              parent: AlwaysScrollableScrollPhysics(),
+              parent: const AlwaysScrollableScrollPhysics(),
             ),
             itemCount: productsData.items.length,
             itemBuilder: (context, i) => Column(

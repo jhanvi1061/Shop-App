@@ -42,15 +42,9 @@ class MeShop extends StatelessWidget {
     print("Build() - MeShop");
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(
-          create: (context) => ProductsProvider(),
-        ),
-        ChangeNotifierProvider(
-          create: (context) => Cart(),
-        ),
-        ChangeNotifierProvider(
-          create: (context) => Orders(),
-        ),
+        ChangeNotifierProvider(create: (context) => ProductsProvider()),
+        ChangeNotifierProvider(create: (context) => Cart()),
+        ChangeNotifierProvider(create: (context) => Orders()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -65,9 +59,7 @@ class MeShop extends StatelessWidget {
             backgroundColor: Color(0xff1E4E5F),
             elevation: 0,
           ),
-          cardTheme: CardTheme(
-            color: Color(0xffFFFAF4),
-          ),
+          cardTheme: CardTheme(color: Color(0xffFFFAF4)),
         ),
         home: ProductsOverviewScreen(),
         routes: {

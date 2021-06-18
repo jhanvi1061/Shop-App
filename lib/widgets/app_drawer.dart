@@ -23,9 +23,7 @@ class AppDrawer extends StatelessWidget {
             toolbarHeight: 48,
             title: Text(
               greet(),
-              style: TextStyle(
-                fontSize: 16,
-              ),
+              style: const TextStyle(fontSize: 16),
             ),
             automaticallyImplyLeading: false,
           ),
@@ -55,12 +53,12 @@ class AppDrawer extends StatelessWidget {
             },
           ),
           const Divider(),
-          ListTile(
+          const ListTile(
             leading: const Icon(Icons.account_circle_outlined),
             title: const Text("Made with ♥ by"),
             subtitle: const Text(
               "Jhanvi Soni",
-              style: TextStyle(
+              style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 18,
               ),
