@@ -24,7 +24,7 @@ void main() {
       statusBarIconBrightness: Brightness.dark,
       // statusBarBrightness is used to set Status bar icon color in iOS.
       statusBarBrightness: Brightness.dark,
-      systemNavigationBarColor: Colors.transparent,
+      systemNavigationBarColor: Color(0xffFFF7EE),
       systemNavigationBarIconBrightness: Brightness.dark,
     ),
   );
