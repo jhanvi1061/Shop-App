@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:shop_app/providers/auth.dart';
 import 'package:shop_app/screens/auth_screen.dart';
 import 'package:shop_app/screens/products_overview_screen.dart';
+import 'package:shop_app/screens/splash_screen.dart';
 
 import './screens/edit_product_screen.dart';
 import './screens/user_products_screen.dart';
@@ -79,7 +80,16 @@ class MeShop extends StatelessWidget {
             ),
             cardTheme: const CardTheme(color: const Color(0xffFFFAF4)),
           ),
-          home: auth.isAuth ? ProductsOverviewScreen() : AuthScreen(),
+          home: auth.isAuth
+              ? ProductsOverviewScreen()
+              : FutureBuilder(
+                  future: auth.tryAutoLogin(),
+                  builder: (context, authResultSnapshot) =>
+                      authResultSnapshot.connectionState ==
+                              ConnectionState.waiting
+                          ? SplashScreen()
+                          : AuthScreen(),
+                ),
           routes: {
             ProductDetailScreen.routeName: (context) => ProductDetailScreen(),
             CartScreen.routeName: (context) => CartScreen(),
