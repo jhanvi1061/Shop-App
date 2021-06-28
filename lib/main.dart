@@ -49,6 +49,7 @@ class MeShop extends StatelessWidget {
           // create: (context)=>ProductsProvider(),
           update: (context, auth, previousProducts) => ProductsProvider(
             auth.token,
+            auth.userId,
             previousProducts == null ? [] : previousProducts.items,
           ),
         ),
