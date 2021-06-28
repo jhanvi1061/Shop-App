@@ -180,14 +180,15 @@ class _AuthCardState extends State<AuthCard> {
       ),
       elevation: 8.0,
       child: Container(
-        height: _authMode == AuthMode.Signup ? 320 : 260,
+        height: _authMode == AuthMode.Signup ? 350 : 300,
         constraints:
             BoxConstraints(minHeight: _authMode == AuthMode.Signup ? 320 : 260),
-        width: deviceSize.width * 0.75,
+        width: deviceSize.width * 0.8,
         padding: EdgeInsets.all(16.0),
         child: Form(
           key: _formKey,
           child: SingleChildScrollView(
+            physics: BouncingScrollPhysics(),
             child: Column(
               children: <Widget>[
                 TextFormField(
@@ -195,9 +196,9 @@ class _AuthCardState extends State<AuthCard> {
                   keyboardType: TextInputType.emailAddress,
                   // ignore: missing_return
                   validator: (value) {
-                    if (value.isEmpty || !value.contains('@')) {
-                      return 'Invalid email!';
-                    }
+                    if (value.isEmpty)
+                      return 'Please enter an email';
+                    else if (!value.contains('@')) return 'Invalid email!';
                   },
                   onSaved: (value) {
                     _authData['email'] = value;
@@ -209,9 +210,9 @@ class _AuthCardState extends State<AuthCard> {
                   controller: _passwordController,
                   // ignore: missing_return
                   validator: (value) {
-                    if (value.isEmpty || value.length < 5) {
-                      return 'Password is too short!';
-                    }
+                    if (value.isEmpty)
+                      return 'Please enter a password';
+                    else if (value.length < 5) return 'Password is too short!';
                   },
                   onSaved: (value) {
                     _authData['password'] = value;
@@ -255,7 +256,9 @@ class _AuthCardState extends State<AuthCard> {
                   ),
                 TextButton(
                   child: Text(
-                      '${_authMode == AuthMode.Login ? 'SIGNUP' : 'LOGIN'} INSTEAD'),
+                    '${_authMode == AuthMode.Login ? 'SIGNUP' : 'LOGIN'} INSTEAD',
+                    style: TextStyle(color: Theme.of(context).primaryColor),
+                  ),
                   onPressed: _switchAuthMode,
                   style: TextButton.styleFrom(
                     padding:
