@@ -2,6 +2,7 @@ import 'package:provider/provider.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:shop_app/helpers/custom_route.dart';
 import 'package:shop_app/providers/auth.dart';
 import 'package:shop_app/screens/auth_screen.dart';
 import 'package:shop_app/screens/products_overview_screen.dart';
@@ -47,7 +48,7 @@ class MeShop extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (context) => Auth()),
         ChangeNotifierProxyProvider<Auth, ProductsProvider>(
-          // create: (context)=>ProductsProvider(),
+          create: (context) => ProductsProvider(null, null, []),
           update: (context, auth, previousProducts) => ProductsProvider(
             auth.token,
             auth.userId,
@@ -56,7 +57,7 @@ class MeShop extends StatelessWidget {
         ),
         ChangeNotifierProvider(create: (context) => Cart()),
         ChangeNotifierProxyProvider<Auth, Orders>(
-          // create: (context)=>Orders(),
+          create: (context) => Orders(null, null, []),
           update: (context, auth, previousOrders) => Orders(
             auth.token,
             auth.userId,
@@ -79,6 +80,12 @@ class MeShop extends StatelessWidget {
               elevation: 0,
             ),
             cardTheme: const CardTheme(color: const Color(0xffFFFAF4)),
+            pageTransitionsTheme: PageTransitionsTheme(
+              builders: {
+                TargetPlatform.android: CustomPageTransitinBuilder(),
+                TargetPlatform.iOS: CustomPageTransitinBuilder(),
+              },
+            ),
           ),
           home: auth.isAuth
               ? ProductsOverviewScreen()
