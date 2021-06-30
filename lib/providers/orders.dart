@@ -90,4 +90,9 @@ class Orders with ChangeNotifier {
     );
     notifyListeners();
   }
+
+  void clear() {
+    _orders = [];
+    notifyListeners();
+  }
 }

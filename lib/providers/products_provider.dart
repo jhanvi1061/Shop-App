@@ -164,7 +164,7 @@ class ProductsProvider with ChangeNotifier {
 
   Future<void> fetchAndSetProducts([bool filterByUser = false]) async {
     final filterString =
-        filterByUser ? 'orderBy="creatorId"&equalTo="$userId' : '';
+        filterByUser ? 'orderBy="creatorId"&equalTo="$userId"' : '';
     var url = Uri.parse(
         'https://by-jhanvi-default-rtdb.firebaseio.com/products.json?auth=$authToken&$filterString');
     try {
@@ -183,7 +183,7 @@ class ProductsProvider with ChangeNotifier {
           id: prodId,
           title: prodData['title'],
           description: prodData['description'],
-          price: prodData['price'],
+          price: prodData['price'].toDouble(),
           imageUrl: prodData['imageUrl'],
           isFavorite:
               favoriteData == null ? false : favoriteData[prodId] ?? false,
@@ -259,5 +259,10 @@ class ProductsProvider with ChangeNotifier {
       throw HttpException('Could not delete product...');
     }
     existingProduct = null;
+  }
+
+  void clear() {
+    _items = [];
+    notifyListeners();
   }
 }
