@@ -19,5 +19,22 @@ class AppTheme {
         TargetPlatform.iOS: CustomPageTransitinBuilder(),
       },
     ),
+    dialogTheme: DialogTheme(
+      backgroundColor: Colors.white,
+      elevation: 1,
+    ),
+    inputDecorationTheme: InputDecorationTheme(
+      labelStyle: TextStyle(color: Colors.black),
+      enabledBorder: UnderlineInputBorder(
+        borderSide: BorderSide(color: Color(0xff1E4E5F)),
+      ),
+      focusedBorder: UnderlineInputBorder(
+        borderSide: BorderSide(color: Color(0xff1E4E5F)),
+      ),
+    ),
+    textSelectionTheme: TextSelectionThemeData(
+      cursorColor: Color(0xff1E4E5F),
+      selectionHandleColor: Color(0xff1E4E5F),
+    ),
   );
 }
