@@ -221,7 +221,6 @@ class ProductsProvider with ChangeNotifier {
       // _items.insert(0,newproduct);  // at the start of the list
       notifyListeners();
     } catch (error) {
-      print(error);
       throw error;
     }
   }

@@ -18,27 +18,17 @@ class ProductsOverviewScreen extends StatefulWidget {
 
 class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
   var _showOnlyFavorites = false;
-  var _isInit = true;
+  // var _isInit = true;
   var _isLoading = false;
 
   @override
   void initState() {
-    // Future.delayed(Duration.zero).then(
-    //   (_) => Provider.of<ProductsProvider>(context).fetchAndSetProducts(),
-    // );
     super.initState();
+    _init();
   }
 
-  @override
-  void didChangeDependencies() {
-    if (_isInit) {
-      // setState(() => _isLoading = true);
-      Provider.of<ProductsProvider>(context).fetchAndSetProducts().then((_) {
-        // if (mounted) setState(() => _isLoading = false);
-      });
-    }
-    _isInit = false;
-    super.didChangeDependencies();
+  Future<void> _init() async {
+    Provider.of<ProductsProvider>(context, listen: false).fetchAndSetProducts();
   }
 
   @override
@@ -48,10 +38,7 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
     final screenWidth = mediaQueryData.size.width;
     return Row(
       children: [
-        if (screenWidth > 600) ...{
-          AppDrawer(),
-          const VerticalDivider(width: 0.1),
-        },
+        if (screenWidth > 800) ...{AppDrawer()},
         Expanded(
           child: Scaffold(
             appBar: AppBar(
@@ -98,11 +85,9 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
                 ),
               ],
             ),
-            drawer: screenWidth < 600 ? AppDrawer() : null,
+            drawer: screenWidth < 800 ? AppDrawer() : null,
             body: _isLoading
-                ? Center(
-                    child: CircularProgressIndicator(),
-                  )
+                ? Center(child: CircularProgressIndicator())
                 : ProductsGrid(_showOnlyFavorites),
           ),
         ),
