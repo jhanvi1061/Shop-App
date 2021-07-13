@@ -35,6 +35,8 @@ class ProductItem extends StatelessWidget {
             child: FadeInImage(
               placeholder: AssetImage('assets/product-placeholder.png'),
               image: NetworkImage(product.imageUrl),
+              imageErrorBuilder: (context, error, stackTrace) =>
+                  Image.asset('assets/product-placeholder.png'),
               fit: BoxFit.cover,
             ),
           ),
@@ -43,7 +45,7 @@ class ProductItem extends StatelessWidget {
           backgroundColor: const Color(0xff021639).withOpacity(0.8),
           leading: Consumer<Product>(
             builder: (context, product, _) => IconButton(
-              color: Theme.of(context).accentColor,
+              color: Color(0xffFFB156),
               icon: Icon(
                 product.isFavorite ? Icons.favorite : Icons.favorite_border,
                 size: 21,

@@ -108,7 +108,10 @@ class _EditProductScreenState extends State<EditProductScreen> {
             content: const Text("Something went wrong"),
             actions: [
               TextButton(
-                child: const Text("Okay"),
+                child: const Text(
+                  "Okay",
+                  style: const TextStyle(color: Color(0xff021639)),
+                ),
                 onPressed: () => Navigator.of(context).pop,
               ),
             ],
@@ -151,8 +154,9 @@ class _EditProductScreenState extends State<EditProductScreen> {
             drawer: screenWidth < 800 ? AppDrawer() : null,
             body: _isLoading
                 ? Center(
-                    child: CircularProgressIndicator(),
-                  )
+                    child: CircularProgressIndicator(
+                        valueColor:
+                            AlwaysStoppedAnimation<Color>(Color(0xff1E4E5F))))
                 : Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: Form(
@@ -219,6 +223,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
                             decoration:
                                 const InputDecoration(labelText: "Description"),
                             maxLines: 3,
+                            textInputAction: TextInputAction.next,
                             keyboardType: TextInputType.multiline,
                             focusNode: _descriptionFocusNode,
                             validator: (value) {

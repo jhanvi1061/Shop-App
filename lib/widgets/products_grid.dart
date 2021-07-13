@@ -15,47 +15,49 @@ class ProductsGrid extends StatelessWidget {
     print("Build() - ProductsGrid");
     MediaQueryData mediaQueryData = MediaQuery.of(context);
     final screenWidth = mediaQueryData.size.width;
-    final productsData = Provider.of<ProductsProvider>(context);
+    final productsData = Provider.of<ProductsProvider>(context, listen: false);
     final products = showFavs ? productsData.favoriteItems : productsData.items;
-    return GridView.builder(
-      physics: const BouncingScrollPhysics(),
-      padding: const EdgeInsets.all(10),
-      itemCount: products.length,
-      itemBuilder: (context, i) => ChangeNotifierProvider.value(
-        value: products[i],
-        // create: (context) =>products[i],
-        child: ProductItem(
-            // id: products[i].id,
-            // title: products[i].title,
-            // imageUrl: products[i].imageUrl,
+    return products.length == 0
+        ? Center(child: Text("No Product Found"))
+        : GridView.builder(
+            physics: const BouncingScrollPhysics(),
+            padding: const EdgeInsets.all(10),
+            itemCount: products.length,
+            itemBuilder: (context, i) => ChangeNotifierProvider.value(
+              value: products[i],
+              // create: (context) =>products[i],
+              child: ProductItem(
+                  // id: products[i].id,
+                  // title: products[i].title,
+                  // imageUrl: products[i].imageUrl,
+                  ),
             ),
-      ),
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: screenWidth < 380
-            ? 1
-            : screenWidth < 600
-                ? 2
-                : screenWidth < 800
-                    ? 3
-                    : screenWidth < 1000
-                        ? 2
-                        : screenWidth < 1200
-                            ? 3
-                            : 4,
-        childAspectRatio: screenWidth < 380
-            ? screenWidth / 200
-            : screenWidth < 600
-                ? (screenWidth / 2) / 200
-                : screenWidth < 800
-                    ? (screenWidth / 2) / 320
-                    : screenWidth < 1000
-                        ? (screenWidth / 2) / 260
-                        : screenWidth < 1200
-                            ? (screenWidth / 2) / 320
-                            : (screenWidth / 2) / 480,
-        crossAxisSpacing: 10,
-        mainAxisSpacing: 10,
-      ),
-    );
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: screenWidth < 380
+                  ? 1
+                  : screenWidth < 600
+                      ? 2
+                      : screenWidth < 800
+                          ? 3
+                          : screenWidth < 1000
+                              ? 2
+                              : screenWidth < 1200
+                                  ? 3
+                                  : 4,
+              childAspectRatio: screenWidth < 380
+                  ? screenWidth / 200
+                  : screenWidth < 600
+                      ? (screenWidth / 2) / 200
+                      : screenWidth < 800
+                          ? (screenWidth / 2) / 320
+                          : screenWidth < 1000
+                              ? (screenWidth / 2) / 260
+                              : screenWidth < 1200
+                                  ? (screenWidth / 2) / 320
+                                  : (screenWidth / 2) / 480,
+              crossAxisSpacing: 10,
+              mainAxisSpacing: 10,
+            ),
+          );
   }
 }

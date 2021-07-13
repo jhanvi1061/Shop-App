@@ -50,7 +50,10 @@ class _OrdersScreenState extends State<OrdersScreen> {
                     .fetchAndSetOrders(),
                 builder: (context, dataSnapshot) {
                   if (dataSnapshot.connectionState == ConnectionState.waiting) {
-                    return Center(child: CircularProgressIndicator());
+                    return Center(
+                        child: CircularProgressIndicator(
+                            valueColor: AlwaysStoppedAnimation<Color>(
+                                Color(0xff1E4E5F))));
                   } else {
                     if (dataSnapshot.error != null) {
                       return Center(
@@ -59,12 +62,14 @@ class _OrdersScreenState extends State<OrdersScreen> {
                     } else {
                       return Consumer<Orders>(
                         builder: (context, orderData, child) =>
-                            ListView.builder(
-                          physics: const BouncingScrollPhysics(),
-                          itemCount: orderData.orders.length,
-                          itemBuilder: (context, i) =>
-                              OrderItem(orderData.orders[i]),
-                        ),
+                            orderData.orders.length == 0
+                                ? Center(child: Text("No Orders"))
+                                : ListView.builder(
+                                    physics: const BouncingScrollPhysics(),
+                                    itemCount: orderData.orders.length,
+                                    itemBuilder: (context, i) =>
+                                        OrderItem(orderData.orders[i]),
+                                  ),
                       );
                     }
                   }

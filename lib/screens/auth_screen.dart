@@ -133,7 +133,10 @@ class _AuthCardState extends State<AuthCard>
         content: Text(message),
         actions: [
           TextButton(
-            child: Text("Okay"),
+            child: Text(
+              "Okay",
+              style: const TextStyle(color: Color(0xff021639)),
+            ),
             onPressed: () {
               Navigator.of(context).pop(_authMode);
             },
@@ -248,11 +251,11 @@ class _AuthCardState extends State<AuthCard>
                     decoration: InputDecoration(
                       labelText: 'Password',
                       suffixIcon: IconButton(
+                        color: const Color(0xff1E4E5F),
                         icon: Icon(
                           _showPassword
                               ? Icons.visibility_off_outlined
                               : Icons.visibility_outlined,
-                          color: Theme.of(context).colorScheme.primary,
                         ),
                         onPressed: () {
                           setState(() {
@@ -310,7 +313,10 @@ class _AuthCardState extends State<AuthCard>
                     height: 20,
                   ),
                   if (_isLoading)
-                    CircularProgressIndicator()
+                    CircularProgressIndicator(
+                      valueColor:
+                          AlwaysStoppedAnimation<Color>(Color(0xff1E4E5F)),
+                    )
                   else
                     ElevatedButton(
                       child: Text(
