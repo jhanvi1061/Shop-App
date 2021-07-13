@@ -29,46 +29,57 @@ class _OrdersScreenState extends State<OrdersScreen> {
   @override
   Widget build(BuildContext context) {
     print("Build() - OrdersScreen");
+    MediaQueryData mediaQueryData = MediaQuery.of(context);
+    final screenWidth = mediaQueryData.size.width;
     // final orderData = Provider.of<Orders>(context);
-    return Scaffold(
-        appBar: AppBar(
-          toolbarHeight: 48,
-          title: const Text(
-            "Your Orders",
-            style: const TextStyle(fontSize: 16),
-          ),
+    return Row(
+      children: [
+        if (screenWidth > 800) ...{AppDrawer()},
+        Expanded(
+          child: Scaffold(
+              appBar: AppBar(
+                toolbarHeight: 48,
+                title: const Text(
+                  "Your Orders",
+                  style: const TextStyle(fontSize: 16),
+                ),
+              ),
+              drawer: screenWidth < 800 ? AppDrawer() : null,
+              body: FutureBuilder(
+                future: Provider.of<Orders>(context, listen: false)
+                    .fetchAndSetOrders(),
+                builder: (context, dataSnapshot) {
+                  if (dataSnapshot.connectionState == ConnectionState.waiting) {
+                    return Center(child: CircularProgressIndicator());
+                  } else {
+                    if (dataSnapshot.error != null) {
+                      return Center(
+                        child: const Text("An error occurred!"),
+                      );
+                    } else {
+                      return Consumer<Orders>(
+                        builder: (context, orderData, child) =>
+                            ListView.builder(
+                          physics: const BouncingScrollPhysics(),
+                          itemCount: orderData.orders.length,
+                          itemBuilder: (context, i) =>
+                              OrderItem(orderData.orders[i]),
+                        ),
+                      );
+                    }
+                  }
+                },
+              )
+              // _isLoading
+              //     ? Center(child: CircularProgressIndicator())
+              //     : ListView.builder(
+              //         physics: BouncingScrollPhysics(),
+              //         itemCount: orderData.orders.length,
+              //         itemBuilder: (context, i) => OrderItem(orderData.orders[i]),
+              //       ),
+              ),
         ),
-        drawer: AppDrawer(),
-        body: FutureBuilder(
-          future:
-              Provider.of<Orders>(context, listen: false).fetchAndSetOrders(),
-          builder: (context, dataSnapshot) {
-            if (dataSnapshot.connectionState == ConnectionState.waiting) {
-              return Center(child: CircularProgressIndicator());
-            } else {
-              if (dataSnapshot.error != null) {
-                return Center(
-                  child: const Text("An error occurred!"),
-                );
-              } else {
-                return Consumer<Orders>(
-                  builder: (context, orderData, child) => ListView.builder(
-                    physics: const BouncingScrollPhysics(),
-                    itemCount: orderData.orders.length,
-                    itemBuilder: (context, i) => OrderItem(orderData.orders[i]),
-                  ),
-                );
-              }
-            }
-          },
-        )
-        // _isLoading
-        //     ? Center(child: CircularProgressIndicator())
-        //     : ListView.builder(
-        //         physics: BouncingScrollPhysics(),
-        //         itemCount: orderData.orders.length,
-        //         itemBuilder: (context, i) => OrderItem(orderData.orders[i]),
-        //       ),
-        );
+      ],
+    );
   }
 }

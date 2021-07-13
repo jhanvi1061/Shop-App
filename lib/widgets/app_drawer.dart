@@ -36,7 +36,7 @@ class AppDrawer extends StatelessWidget {
               Navigator.of(context).pushReplacementNamed('/');
             },
           ),
-          const Divider(),
+          const Divider(color: Colors.transparent),
           ListTile(
             leading: const Icon(Icons.payment_outlined),
             title: const Text("Orders"),
@@ -50,7 +50,7 @@ class AppDrawer extends StatelessWidget {
                   .pushReplacementNamed(OrdersScreen.routeName);
             },
           ),
-          const Divider(),
+          const Divider(color: Colors.transparent),
           ListTile(
             leading: const Icon(Icons.edit_outlined),
             title: const Text("Manage Products"),
@@ -59,7 +59,7 @@ class AppDrawer extends StatelessWidget {
                   .pushReplacementNamed(UserProductsScreen.routeName);
             },
           ),
-          const Divider(),
+          const Divider(color: Colors.transparent),
           const ListTile(
             leading: const Icon(Icons.account_circle_outlined),
             title: const Text("Made with ♥ by"),
@@ -71,7 +71,7 @@ class AppDrawer extends StatelessWidget {
               ),
             ),
           ),
-          const Divider(),
+          const Divider(color: Colors.transparent),
           ListTile(
             leading: const Icon(Icons.exit_to_app_outlined),
             title: const Text("Logout"),

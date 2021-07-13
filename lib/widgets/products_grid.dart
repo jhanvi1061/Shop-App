@@ -30,20 +30,29 @@ class ProductsGrid extends StatelessWidget {
             // imageUrl: products[i].imageUrl,
             ),
       ),
-      // gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-      //   crossAxisCount: screenWidth > 1200
-      //       ? 4
-      //       : screenWidth > 900
-      //           ? 4
-      //           : screenWidth > 600
-      //               ? 3
-      //               : screenWidth > 400
-      //                   ? 2
-      //                   : 1,
-      //   childAspectRatio: 3 / 2.25,
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        childAspectRatio: 3 / 2,
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: screenWidth < 380
+            ? 1
+            : screenWidth < 600
+                ? 2
+                : screenWidth < 800
+                    ? 3
+                    : screenWidth < 1000
+                        ? 2
+                        : screenWidth < 1200
+                            ? 3
+                            : 4,
+        childAspectRatio: screenWidth < 380
+            ? screenWidth / 200
+            : screenWidth < 600
+                ? (screenWidth / 2) / 200
+                : screenWidth < 800
+                    ? (screenWidth / 2) / 320
+                    : screenWidth < 1000
+                        ? (screenWidth / 2) / 260
+                        : screenWidth < 1200
+                            ? (screenWidth / 2) / 320
+                            : (screenWidth / 2) / 480,
         crossAxisSpacing: 10,
         mainAxisSpacing: 10,
       ),
