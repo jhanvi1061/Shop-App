@@ -49,11 +49,12 @@ class MeShop extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => Auth()),
         ChangeNotifierProxyProvider<Auth, ProductsProvider>(
           create: (context) => ProductsProvider(null, null, []),
-          update: (context, auth, previousProducts) => ProductsProvider(
-            auth.token,
-            auth.userId,
-            previousProducts == null ? [] : previousProducts.items,
-          ),
+          update: (context, auth, previousProducts) => previousProducts
+            ..update(
+              auth.token,
+              auth.userId,
+              previousProducts == null ? [] : previousProducts.items,
+            ),
         ),
         ChangeNotifierProvider(create: (context) => Cart()),
         ChangeNotifierProxyProvider<Auth, Orders>(

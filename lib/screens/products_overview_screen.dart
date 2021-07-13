@@ -18,8 +18,7 @@ class ProductsOverviewScreen extends StatefulWidget {
 
 class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
   var _showOnlyFavorites = false;
-  // var _isInit = true;
-  var _isLoading = false;
+  var _isLoading = true;
 
   @override
   void initState() {
@@ -28,7 +27,11 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
   }
 
   Future<void> _init() async {
-    Provider.of<ProductsProvider>(context, listen: false).fetchAndSetProducts();
+    await Provider.of<ProductsProvider>(context, listen: false)
+        .fetchAndSetProducts();
+    setState(() {
+      _isLoading = false;
+    });
   }
 
   @override
@@ -87,7 +90,10 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
             ),
             drawer: screenWidth < 800 ? AppDrawer() : null,
             body: _isLoading
-                ? Center(child: CircularProgressIndicator())
+                ? Center(
+                    child: CircularProgressIndicator(
+                        valueColor:
+                            AlwaysStoppedAnimation<Color>(Color(0xff1E4E5F))))
                 : ProductsGrid(_showOnlyFavorites),
           ),
         ),
