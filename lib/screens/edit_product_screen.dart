@@ -1,8 +1,8 @@
 import 'package:provider/provider.dart';
 
 import 'package:flutter/material.dart';
-import 'package:shop_app/widgets/app_drawer.dart';
 
+import '../widgets/app_drawer.dart';
 import '../providers/product.dart';
 import '../providers/products_provider.dart';
 
@@ -19,13 +19,8 @@ class _EditProductScreenState extends State<EditProductScreen> {
   final _imageUrlController = TextEditingController();
   final _imageUrlFocusNode = FocusNode();
   final _form = GlobalKey<FormState>();
-  var _editedProduct = Product(
-    id: null,
-    title: '',
-    description: '',
-    price: 0,
-    imageUrl: '',
-  );
+  var _editedProduct =
+      Product(id: null, title: '', description: '', price: 0, imageUrl: '');
 
   var _initValues = {
     'title': '',
@@ -108,20 +103,14 @@ class _EditProductScreenState extends State<EditProductScreen> {
             content: const Text("Something went wrong"),
             actions: [
               TextButton(
-                child: const Text(
-                  "Okay",
-                  style: const TextStyle(color: Color(0xff021639)),
-                ),
+                child: const Text("Okay",
+                    style: const TextStyle(color: const Color(0xff021639))),
                 onPressed: () => Navigator.of(context).pop,
               ),
             ],
           ),
         );
       }
-      // finally {
-      //   setState(() => _isLoading = false);
-      //   Navigator.of(context).pop();
-      // }
     }
     setState(() => _isLoading = false);
     Navigator.of(context).pop();
@@ -130,7 +119,6 @@ class _EditProductScreenState extends State<EditProductScreen> {
   @override
   Widget build(BuildContext context) {
     print("Build() - EditProductScreen");
-
     MediaQueryData mediaQueryData = MediaQuery.of(context);
     final screenWidth = mediaQueryData.size.width;
     return Row(
@@ -140,10 +128,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
           child: Scaffold(
             appBar: AppBar(
               toolbarHeight: 48,
-              title: const Text(
-                "Edit Product",
-                style: const TextStyle(fontSize: 16),
-              ),
+              title: const Text("Edit Product"),
               actions: [
                 IconButton(
                   icon: const Icon(Icons.save_outlined),
@@ -153,10 +138,11 @@ class _EditProductScreenState extends State<EditProductScreen> {
             ),
             drawer: screenWidth < 800 ? AppDrawer() : null,
             body: _isLoading
-                ? Center(
-                    child: CircularProgressIndicator(
-                        valueColor:
-                            AlwaysStoppedAnimation<Color>(Color(0xff1E4E5F))))
+                ? const Center(
+                    child: const CircularProgressIndicator(
+                        valueColor: AlwaysStoppedAnimation<Color>(
+                            const Color(0xff1E4E5F))),
+                  )
                 : Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: Form(

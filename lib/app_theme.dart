@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:shop_app/helpers/custom_route.dart';
+
+import './helpers/custom_route.dart';
 
 class AppTheme {
   static final ThemeData light = ThemeData(
@@ -11,6 +12,7 @@ class AppTheme {
       brightness: Brightness.dark,
       backgroundColor: const Color(0xff1E4E5F),
       elevation: 0,
+      titleTextStyle: const TextStyle(fontSize: 16),
     ),
     cardTheme: const CardTheme(color: const Color(0xffFFFAF4)),
     pageTransitionsTheme: PageTransitionsTheme(
@@ -26,15 +28,15 @@ class AppTheme {
     inputDecorationTheme: InputDecorationTheme(
       labelStyle: TextStyle(color: Colors.black),
       enabledBorder: UnderlineInputBorder(
-        borderSide: BorderSide(color: Color(0xff1E4E5F)),
+        borderSide: BorderSide(color: const Color(0xff1E4E5F)),
       ),
       focusedBorder: UnderlineInputBorder(
-        borderSide: BorderSide(color: Color(0xff1E4E5F)),
+        borderSide: BorderSide(color: const Color(0xff1E4E5F)),
       ),
     ),
     textSelectionTheme: TextSelectionThemeData(
-      cursorColor: Color(0xff1E4E5F),
-      selectionHandleColor: Color(0xff1E4E5F),
+      cursorColor: const Color(0xff1E4E5F),
+      selectionHandleColor: const Color(0xff1E4E5F),
     ),
   );
 }

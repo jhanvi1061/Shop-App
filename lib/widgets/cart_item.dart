@@ -31,22 +31,14 @@ class CartItem extends StatelessWidget {
                 const Text("Do you want to remove the item from the cart?"),
             actions: [
               TextButton(
-                child: const Text(
-                  "No",
-                  style: const TextStyle(color: Color(0xff021639)),
-                ),
-                onPressed: () {
-                  Navigator.of(context).pop(false);
-                },
+                child: const Text("No",
+                    style: const TextStyle(color: const Color(0xff021639))),
+                onPressed: () => Navigator.of(context).pop(false),
               ),
               TextButton(
-                child: const Text(
-                  "Yes",
-                  style: const TextStyle(color: Color(0xff021639)),
-                ),
-                onPressed: () {
-                  Navigator.of(context).pop(true);
-                },
+                child: const Text("Yes",
+                    style: const TextStyle(color: const Color(0xff021639))),
+                onPressed: () => Navigator.of(context).pop(true),
               ),
             ],
           ),
@@ -54,11 +46,7 @@ class CartItem extends StatelessWidget {
       },
       background: Container(
         color: Theme.of(context).errorColor,
-        child: const Icon(
-          Icons.delete,
-          color: Colors.white,
-          size: 30,
-        ),
+        child: const Icon(Icons.delete, color: Colors.white, size: 30),
         alignment: Alignment.centerRight,
         padding: const EdgeInsets.only(right: 20),
         margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 4),

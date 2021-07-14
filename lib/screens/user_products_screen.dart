@@ -27,10 +27,7 @@ class UserProductsScreen extends StatelessWidget {
           child: Scaffold(
             appBar: AppBar(
               toolbarHeight: 48,
-              title: const Text(
-                "Your Products",
-                style: const TextStyle(fontSize: 16),
-              ),
+              title: const Text("Your Products"),
               actions: [
                 IconButton(
                   icon: const Icon(Icons.add),
@@ -44,37 +41,38 @@ class UserProductsScreen extends StatelessWidget {
             drawer: screenWidth < 800 ? AppDrawer() : null,
             body: FutureBuilder(
               future: _refreshProducts(context),
-              builder: (context, snapshot) => snapshot.connectionState ==
-                      ConnectionState.waiting
-                  ? Center(
-                      child: CircularProgressIndicator(
-                          valueColor:
-                              AlwaysStoppedAnimation<Color>(Color(0xff1E4E5F))))
-                  : RefreshIndicator(
-                      onRefresh: () => _refreshProducts(context),
-                      color: const Color(0xff1E4E5F),
-                      child: Consumer<ProductsProvider>(
-                        builder: (context, productsData, _) => Padding(
-                          padding: const EdgeInsets.all(8),
-                          child: ListView.builder(
-                            physics: const BouncingScrollPhysics(
-                              parent: const AlwaysScrollableScrollPhysics(),
-                            ),
-                            itemCount: productsData.items.length,
-                            itemBuilder: (context, i) => Column(
-                              children: [
-                                UserProductItem(
-                                  id: productsData.items[i].id,
-                                  title: productsData.items[i].title,
-                                  imageUrl: productsData.items[i].imageUrl,
+              builder: (context, snapshot) =>
+                  snapshot.connectionState == ConnectionState.waiting
+                      ? const Center(
+                          child: const CircularProgressIndicator(
+                              valueColor: AlwaysStoppedAnimation<Color>(
+                                  const Color(0xff1E4E5F))),
+                        )
+                      : RefreshIndicator(
+                          onRefresh: () => _refreshProducts(context),
+                          color: const Color(0xff1E4E5F),
+                          child: Consumer<ProductsProvider>(
+                            builder: (context, productsData, _) => Padding(
+                              padding: const EdgeInsets.all(8),
+                              child: ListView.builder(
+                                physics: const BouncingScrollPhysics(
+                                  parent: const AlwaysScrollableScrollPhysics(),
                                 ),
-                                const Divider(),
-                              ],
+                                itemCount: productsData.items.length,
+                                itemBuilder: (context, i) => Column(
+                                  children: [
+                                    UserProductItem(
+                                      id: productsData.items[i].id,
+                                      title: productsData.items[i].title,
+                                      imageUrl: productsData.items[i].imageUrl,
+                                    ),
+                                    const Divider(),
+                                  ],
+                                ),
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                    ),
             ),
           ),
         ),

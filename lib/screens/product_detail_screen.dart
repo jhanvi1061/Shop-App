@@ -16,12 +16,10 @@ class ProductDetailScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 48,
-        title: Text(
-          loadedProduct.title,
-          style: const TextStyle(fontSize: 16),
-        ),
+        title: Text(loadedProduct.title),
       ),
       body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
         child: Column(
           children: [
             Container(

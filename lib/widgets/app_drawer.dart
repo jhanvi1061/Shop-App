@@ -1,7 +1,8 @@
-import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shop_app/providers/auth.dart';
 
+import 'package:flutter/material.dart';
+
+import '../providers/auth.dart';
 import '../screens/user_products_screen.dart';
 import '../screens/orders_screen.dart';
 
@@ -23,10 +24,7 @@ class AppDrawer extends StatelessWidget {
         children: [
           AppBar(
             toolbarHeight: 48,
-            title: Text(
-              greet(),
-              style: const TextStyle(fontSize: 16),
-            ),
+            title: Text(greet()),
             automaticallyImplyLeading: false,
           ),
           ListTile(
@@ -60,14 +58,21 @@ class AppDrawer extends StatelessWidget {
             },
           ),
           const Divider(color: Colors.transparent),
-          const ListTile(
+          ListTile(
             leading: const Icon(Icons.account_circle_outlined),
-            title: const Text("Made with ♥ by"),
+            title: Row(
+              children: [
+                const Text("Made with"),
+                const Icon(Icons.favorite_rounded),
+                const Text(" by"),
+              ],
+            ),
             subtitle: const Text(
               "Jhanvi Soni",
               style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 18,
+                color: Colors.black,
               ),
             ),
           ),

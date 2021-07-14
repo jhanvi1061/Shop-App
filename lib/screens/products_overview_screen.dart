@@ -29,9 +29,7 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
   Future<void> _init() async {
     await Provider.of<ProductsProvider>(context, listen: false)
         .fetchAndSetProducts();
-    setState(() {
-      _isLoading = false;
-    });
+    setState(() => _isLoading = false);
   }
 
   @override
@@ -46,10 +44,7 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
           child: Scaffold(
             appBar: AppBar(
               toolbarHeight: 48,
-              title: const Text(
-                "MeShop",
-                style: const TextStyle(fontSize: 16),
-              ),
+              title: const Text("MeShop"),
               actions: [
                 Consumer<Cart>(
                   child: IconButton(
@@ -90,10 +85,11 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
             ),
             drawer: screenWidth < 800 ? AppDrawer() : null,
             body: _isLoading
-                ? Center(
-                    child: CircularProgressIndicator(
-                        valueColor:
-                            AlwaysStoppedAnimation<Color>(Color(0xff1E4E5F))))
+                ? const Center(
+                    child: const CircularProgressIndicator(
+                        valueColor: AlwaysStoppedAnimation<Color>(
+                            const Color(0xff1E4E5F))),
+                  )
                 : ProductsGrid(_showOnlyFavorites),
           ),
         ),

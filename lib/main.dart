@@ -2,12 +2,12 @@ import 'package:provider/provider.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:shop_app/app_theme.dart';
-import 'package:shop_app/providers/auth.dart';
-import 'package:shop_app/screens/auth_screen.dart';
-import 'package:shop_app/screens/products_overview_screen.dart';
-import 'package:shop_app/screens/splash_screen.dart';
 
+import './app_theme.dart';
+import './providers/auth.dart';
+import './screens/auth_screen.dart';
+import './screens/products_overview_screen.dart';
+import './screens/splash_screen.dart';
 import './screens/edit_product_screen.dart';
 import './screens/user_products_screen.dart';
 import './providers/cart.dart';
@@ -28,7 +28,7 @@ void main() {
       statusBarIconBrightness: Brightness.dark,
       // statusBarBrightness is used to set Status bar icon color in iOS.
       statusBarBrightness: Brightness.dark,
-      systemNavigationBarColor: Color(0xffFFF7EE),
+      systemNavigationBarColor: const Color(0xffFFF7EE),
       systemNavigationBarIconBrightness: Brightness.dark,
     ),
   );

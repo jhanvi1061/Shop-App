@@ -1,19 +1,13 @@
 import 'package:provider/provider.dart';
 
 import 'package:flutter/material.dart';
-import 'package:shop_app/providers/auth.dart';
 
+import '../providers/auth.dart';
 import '../providers/cart.dart';
 import '../providers/product.dart';
 import '../screens/product_detail_screen.dart';
 
 class ProductItem extends StatelessWidget {
-  // final String id;
-  // final String title;
-  // final String imageUrl;
-
-  // const ProductItem({this.id, this.title, this.imageUrl});
-
   @override
   Widget build(BuildContext context) {
     print("Build() - ProductItem");
@@ -33,7 +27,7 @@ class ProductItem extends StatelessWidget {
           child: Hero(
             tag: product.id,
             child: FadeInImage(
-              placeholder: AssetImage('assets/product-placeholder.png'),
+              placeholder: const AssetImage('assets/product-placeholder.png'),
               image: NetworkImage(product.imageUrl),
               imageErrorBuilder: (context, error, stackTrace) =>
                   Image.asset('assets/product-placeholder.png'),
@@ -45,7 +39,7 @@ class ProductItem extends StatelessWidget {
           backgroundColor: const Color(0xff021639).withOpacity(0.8),
           leading: Consumer<Product>(
             builder: (context, product, _) => IconButton(
-              color: Color(0xffFFB156),
+              color: const Color(0xffFFB156),
               icon: Icon(
                 product.isFavorite ? Icons.favorite : Icons.favorite_border,
                 size: 21,

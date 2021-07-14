@@ -18,19 +18,14 @@ class ProductsGrid extends StatelessWidget {
     final productsData = Provider.of<ProductsProvider>(context, listen: false);
     final products = showFavs ? productsData.favoriteItems : productsData.items;
     return products.length == 0
-        ? Center(child: Text("No Product Found"))
+        ? const Center(child: const Text("No Product Found"))
         : GridView.builder(
             physics: const BouncingScrollPhysics(),
             padding: const EdgeInsets.all(10),
             itemCount: products.length,
             itemBuilder: (context, i) => ChangeNotifierProvider.value(
               value: products[i],
-              // create: (context) =>products[i],
-              child: ProductItem(
-                  // id: products[i].id,
-                  // title: products[i].title,
-                  // imageUrl: products[i].imageUrl,
-                  ),
+              child: ProductItem(),
             ),
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: screenWidth < 380

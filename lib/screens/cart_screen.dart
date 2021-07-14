@@ -1,8 +1,8 @@
 import 'package:provider/provider.dart';
 
 import 'package:flutter/material.dart';
-import 'package:shop_app/widgets/app_drawer.dart';
 
+import '../widgets/app_drawer.dart';
 import '../providers/cart.dart' show Cart;
 import '../providers/orders.dart';
 import '../widgets/cart_item.dart';
@@ -23,10 +23,7 @@ class CartScreen extends StatelessWidget {
           child: Scaffold(
             appBar: AppBar(
               toolbarHeight: 48,
-              title: const Text(
-                "Your Cart",
-                style: const TextStyle(fontSize: 16),
-              ),
+              title: const Text("Your Cart"),
             ),
             body: Column(
               children: [
@@ -61,7 +58,7 @@ class CartScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 10),
                 cart.items.length == 0
-                    ? Center(child: Text("Your Cart is empty"))
+                    ? const Center(child: const Text("Your Cart is empty"))
                     : Expanded(
                         child: ListView.builder(
                           physics: const BouncingScrollPhysics(),
@@ -100,9 +97,10 @@ class _OrderButtonState extends State<OrderButton> {
   Widget build(BuildContext context) {
     return TextButton(
       child: _isLoading
-          ? CircularProgressIndicator(
+          ? const CircularProgressIndicator(
               strokeWidth: 1.5,
-              valueColor: AlwaysStoppedAnimation<Color>(Color(0xff1E4E5F)),
+              valueColor:
+                  AlwaysStoppedAnimation<Color>(const Color(0xff1E4E5F)),
             )
           : Text(
               "ORDER NOW",

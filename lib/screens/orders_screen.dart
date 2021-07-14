@@ -39,10 +39,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
           child: Scaffold(
               appBar: AppBar(
                 toolbarHeight: 48,
-                title: const Text(
-                  "Your Orders",
-                  style: const TextStyle(fontSize: 16),
-                ),
+                title: const Text("Your Orders"),
               ),
               drawer: screenWidth < 800 ? AppDrawer() : null,
               body: FutureBuilder(
@@ -50,20 +47,20 @@ class _OrdersScreenState extends State<OrdersScreen> {
                     .fetchAndSetOrders(),
                 builder: (context, dataSnapshot) {
                   if (dataSnapshot.connectionState == ConnectionState.waiting) {
-                    return Center(
-                        child: CircularProgressIndicator(
+                    return const Center(
+                        child: const CircularProgressIndicator(
                             valueColor: AlwaysStoppedAnimation<Color>(
-                                Color(0xff1E4E5F))));
+                                const Color(0xff1E4E5F))));
                   } else {
                     if (dataSnapshot.error != null) {
-                      return Center(
+                      return const Center(
                         child: const Text("An error occurred!"),
                       );
                     } else {
                       return Consumer<Orders>(
                         builder: (context, orderData, child) =>
                             orderData.orders.length == 0
-                                ? Center(child: Text("No Orders"))
+                                ? const Center(child: const Text("No Orders"))
                                 : ListView.builder(
                                     physics: const BouncingScrollPhysics(),
                                     itemCount: orderData.orders.length,

@@ -5,8 +5,8 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     print("Build() - SplashScreen");
     return Scaffold(
-      body: Center(
-        child: Text('Loading...'),
+      body: const Center(
+        child: const Text('Loading...'),
       ),
     );
   }
